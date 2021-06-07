@@ -10,10 +10,12 @@ class Country(models.Model):
 
 class State(models.Model):
     name = models.CharField(max_length=100)
-    country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
+    select_country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='Country')
+    # def __str__(self):
+    #     return "{}:{}..".format(self.name, self.select_country[:10])
 
 class Address(models.Model):
     name = models.CharField(max_length=100)
     house_number = models.CharField(max_length=20)
     road_number = models.IntegerField()
-    state_id = models.ForeignKey(State, on_delete=models.CASCADE)
+    select_state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='Stete')
